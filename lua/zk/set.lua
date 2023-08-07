@@ -1,8 +1,5 @@
 vim.g.netrw_banner=0
 vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
-vim.g.netrw_altv=1
-vim.g.netrw_liststyle=1
-vim.g.netrw_sort_by="name"
 vim.cmd [[
   autocmd FileType netrw nmap <buffer> <C-l> <C-w>l
   autocmd FileType netrw nmap <buffer> <C-r> <Space>.
