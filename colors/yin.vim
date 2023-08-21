@@ -174,6 +174,16 @@ call s:hi('DiffAdded', s:palette.green, s:palette.black, '')
 call s:hi('DiffChanged', s:palette.blue, s:palette.black, '')
 call s:hi('DiffRemoved', s:palette.red, s:palette.black, '')
 
+call s:hi('DiagnosticError', s:palette.red, s:palette.white, '')
+call s:hi('DiagnosticInfo', s:palette.gray13, s:palette.white, '')
+call s:hi('DiagnosticWarn', s:palette.brown, s:palette.white, '')
+call s:hi('DiagnosticHint', s:palette.blue, s:palette.white, '')
+
+call s:hi('DiagnosticVirtualTextError', s:palette.red, s:palette.white, '')
+call s:hi('DiagnosticVirtualTextInfo', s:palette.gray13, s:palette.white, '')
+call s:hi('DiagnosticVirtualTextWarn', s:palette.brown, s:palette.white, '')
+call s:hi('DiagnosticVirtualTextHint', s:palette.blue, s:palette.white, '')
+
 highlight! link Character Constant
 highlight! link Float Number
 highlight! link Boolean Number

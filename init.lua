@@ -1,1 +1,1 @@
-require("zk")
+require "zk"

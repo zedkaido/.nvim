@@ -38,6 +38,7 @@ let s:palette.brown = [130, '#af5f00']
 let s:palette.blue = [67, '#5f87af']
 let s:palette.darkblue = [27, '#005fff']
 let s:palette.green = [65, '#5f875f']
+let s:palette.yello = [110, '#101010']
 let s:palette.red = [88, '#870000']
 let s:palette.magenta = [125, '#af005f']
 
@@ -171,6 +172,15 @@ call s:hi('DiffAdded', s:palette.green, s:palette.white, '')
 call s:hi('DiffChanged', s:palette.blue, s:palette.white, '')
 call s:hi('DiffRemoved', s:palette.red, s:palette.white, '')
 
+call s:hi('DiagnosticError', s:palette.red, s:palette.white, '')
+call s:hi('DiagnosticInfo', s:palette.gray13, s:palette.white, '')
+call s:hi('DiagnosticWarn', s:palette.brown, s:palette.white, '')
+call s:hi('DiagnosticHint', s:palette.blue, s:palette.white, '')
+
+call s:hi('DiagnosticVirtualTextError', s:palette.red, s:palette.white, '')
+call s:hi('DiagnosticVirtualTextInfo', s:palette.gray13, s:palette.white, '')
+call s:hi('DiagnosticVirtualTextWarn', s:palette.brown, s:palette.white, '')
+call s:hi('DiagnosticVirtualTextHint', s:palette.blue, s:palette.white, '')
 
 highlight! link Character Constant
 highlight! link Float Number
