@@ -2,10 +2,6 @@ return {
 	-- LSP Configuration & Plugins
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		-- Automatically install LSPs to stdpath for neovim
-		{ "williamboman/mason.nvim", config = true },
-		"williamboman/mason-lspconfig.nvim",
-
 		-- Useful status updates for LSP
 		-- NOTE: `opts = {}` is the same as calling `require("fidget").setup({})`
 		{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
@@ -56,31 +52,6 @@ return {
 			end, { desc = "Format current buffer with LSP" })
 		end
 
-		-- Enable the following language servers
-		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-		--
-		--  Add any additional override configuration in the following tables. They will be passed to
-		--  the `settings` field of the server config. You must look up that documentation yourself.
-		--
-		--  If you want to override the default filetypes that your language server will attach to you can
-		--  define the property "filetypes" to the map in question.
-		local servers = {
-			-- clangd = {},
-			-- gopls = {},
-			-- pyright = {},
-			-- rust_analyzer = {},
-			-- tsserver = {},
-			-- hls = {},
-			html = {},
-			svelte = {},
-			lua_ls = {
-				Lua = {
-					workspace = { checkThirdParty = false },
-					telemetry = { enable = false },
-				},
-			},
-		}
-
 		-- Setup neovim lua configuration
 		require("neodev").setup()
 
@@ -88,22 +59,73 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-		-- Ensure the servers above are installed
-		local mason_lspconfig = require "mason-lspconfig"
+		-- `:h lspconfig-all`
+		-- to view all LSP configs provided by `nvim-lspconfig`
 
-		mason_lspconfig.setup {
-			ensure_installed = vim.tbl_keys(servers),
-		}
-
-		mason_lspconfig.setup_handlers {
-			function(server_name)
-				require("lspconfig")[server_name].setup {
-					capabilities = capabilities,
-					on_attach = on_attach,
-					settings = servers[server_name],
-					filetypes = (servers[server_name] or {}).filetypes,
+		-- INSTALL `brew install lua-language-server`
+		require "lspconfig".lua_ls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				Lua = {
+					runtime = {
+						version = 'LuaJIT'
+					},
+					workspace = {
+						checkThirdParty = false,
+					},
+					telemetry = {
+						enable = false,
+					},
 				}
-			end
+			}
 		}
+
+		-- INSTALLL `go install golang.org/x/tools/gopls@latest`
+		require "lspconfig".gopls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `npm install -g svelte-language-server`
+		require "lspconfig".svelte.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `npm install --global cssmodules-language-server`
+		--require "lspconfig".cssmodules_ls.setup {
+		--	capabilities = capabilities,
+		--	on_attach = on_attach,
+		--	filteype: { 
+		--		"javascript",
+		--		"javascriptreact",
+		--		"typescripts",
+		--		"typescriptreact",
+		--		"svelte"
+		--	}
+		--}
+
+		-- INSTALL `brew install llvm`
+		require "lspconfig".clangd.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `ghcup install hls`
+		require "lspconfig".hls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `rustup component add rust-src`
+		--require "lspconfig".rust_analyzer.setup {
+		--	capabilities = capabilities,
+		--	on_attach = on_attach,
+		--	diagnostics = {
+		--		enable = false;
+		--	}
+		--}
+
 	end
 }
