@@ -36,7 +36,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.keymap.set("n", "Q", "!!zsh<CR>", { desc = "BANG BANG -> :.!zsh" }) -- converts to :.!zsh
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open project inside tmux" })
+vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww tmux-switch-session<CR>", { desc = "Switch to tmux session" })
 vim.keymap.set("n", "<leader>ff", function()
 	vim.lsp.buf.format()
 end, { desc = "[F]ormat [F]ile" })
