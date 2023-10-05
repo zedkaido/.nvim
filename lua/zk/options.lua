@@ -1,18 +1,5 @@
-vim.cmd("syntax on")
-
-vim.cmd([[
-	 augroup NoSyntaxHighlight
-	 autocmd!
-	 autocmd BufRead,BufNewFile *.md set syntax=off
-	 autocmd BufRead,BufNewFile *.vim set syntax=off
-	 autocmd BufRead,BufNewFile *.lua set syntax=off
-	 autocmd BufRead,BufNewFile *.log set syntax=off
-	 autocmd BufRead,BufNewFile *.html set syntax=off
-	 autocmd BufRead,BufNewFile *.css set syntax=off
-	 autocmd BufRead,BufNewFile *.js set syntax=off
-	 autocmd BufRead,BufNewFile *.svelte set syntax=off
-	 augroup END
-]])
+-- syntax who?
+vim.cmd("syntax off")
 
 vim.g.netrw_banner = 0
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
@@ -23,7 +10,7 @@ vim.cmd [[
 ]]
 
 vim.opt.guicursor = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 vim.wo.signcolumn = "yes"
 vim.wo.number = true
