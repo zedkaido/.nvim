@@ -4,6 +4,7 @@ vim.cmd([[command! Tomorrow lua Tomorrow()]])
 vim.cmd([[command! Timestamp lua Timestamp()]])
 vim.cmd([[command! ID lua ID()]])
 vim.cmd([[command! Uid lua UUID()]])
+vim.cmd([[command! Journal lua Journal()]])
 
 function Today()
 	local format = "%Y-%m-%d"
@@ -46,4 +47,8 @@ function UUID()
 		return string.format("%x", v)
 	end)
 	vim.api.nvim_put({ uuid }, "", true, true)
+end
+
+function Journal()
+	vim.cmd("edit " .. vim.g.wiki_root .. "/journal.md")
 end

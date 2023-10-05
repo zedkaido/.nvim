@@ -7,6 +7,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 vim.keymap.set("n", "<C-s>", "<cmd>:w<CR>", { desc = "Save file" })
 vim.keymap.set("i", "<C-s>", "<Esc><cmd>:w<CR>", { desc = "Save file" })
+vim.keymap.set("i", "<M-BS>", "<C-w>", { desc = "<I> Delete previuos word" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line :m+1" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line :m-2" })
