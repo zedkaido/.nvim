@@ -67,3 +67,6 @@ vim.keymap.set("n", "<leader>cgc", ":ChatGPTCompleteCode<CR>", { desc = "[C]hat[
 vim.keymap.set("n", "<leader>cge", ":ChatGPTEditWithInstructions<CR>", { desc = "[C]hat[G]PT [E]dit With Instructions" })
 vim.keymap.set("n", "<leader>cgr", ":ChatGPTRun ", { desc = "[C]hat[G]PT [R]un" })
 vim.keymap.set("v", "<leader>cgr", ":ChatGPTRun ", { desc = "[C]hat[G]PT [R]un" })
+
+vim.keymap.set("i", "<C-l>", "<Esc>ysiw]wysiw]eea<Space>", { desc = "Surround word with [[x]]", remap = true })
+vim.keymap.set("n", "<leader>nl", "ysiw]wysiw]w", { desc = "Surround word with [[x]]", remap = true })
