@@ -70,4 +70,5 @@ vim.keymap.set("v", "<leader>cgr", ":ChatGPTRun ", { desc = "[C]hat[G]PT [R]un" 
 
 vim.keymap.set("i", "<C-l>", "<Esc>ysiW]wysiW]eeea<Space>", { desc = "`x` -> [[x]]", remap = true })
 vim.keymap.set("n", "<leader>nl", "ysiW]wysiW]w", { desc = "`x` -> [[x]]", remap = true })
+vim.keymap.set('v', '<leader>nl', "c[[<C-R>\"]]<Esc>", { desc = "[V] `x` -> [[x]]", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>nd", "ds]ds]", { desc = "[[x]] -> `x`", remap = true })
