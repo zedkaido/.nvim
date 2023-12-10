@@ -81,30 +81,47 @@ return {
 			}
 		}
 
+		-- INSTALL `pnpm i -g bash-language-server`	
+		require "lspconfig".bashls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
 		-- INSTALLL `go install golang.org/x/tools/gopls@latest`
 		require "lspconfig".gopls.setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		}
 
-		-- INSTALL `npm install -g svelte-language-server`
+		-- INSTALL `pnpm install -g svelte-language-server`
 		require "lspconfig".svelte.setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		}
 
-		-- INSTALL `npm install --global cssmodules-language-server`
-		--require "lspconfig".cssmodules_ls.setup {
-		--	capabilities = capabilities,
-		--	on_attach = on_attach,
-		--	filteype: { 
-		--		"javascript",
-		--		"javascriptreact",
-		--		"typescripts",
-		--		"typescriptreact",
-		--		"svelte"
-		--	}
-		--}
+		-- INSTALL `pnpm i -g vscode-langservers-extracted`
+		require "lspconfig".html.setup{
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `pnpm install -g typescript typescript-language-server`
+		require "lspconfig".tsserver.setup{
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `pnpm i -g vscode-langservers-extracted`
+		require "lspconfig".cssls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- INSTALL `pnpm i -g vscode-langservers-extracted`
+		require "lspconfig".jsonls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
 
 		-- INSTALL `brew install llvm`
 		require "lspconfig".clangd.setup {
