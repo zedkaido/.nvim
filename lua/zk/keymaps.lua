@@ -36,7 +36,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
-vim.keymap.set("n", "Q", "!!zsh<CR>", { desc = "BANG BANG -> :.!zsh" }) -- converts to :.!zsh
+vim.keymap.set("n", "Q", "@qj")
+vim.keymap.set("x", "Q", ":norm @q<CR>")
+
+vim.keymap.set("n", "Z", "!!zsh<CR>", { desc = "BANG BANG -> :.!zsh" }) -- converts to :.!zsh
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Open project inside tmux" })
 vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww tmux-switch-session<CR>", { desc = "Switch to tmux session" })
 vim.keymap.set("n", "<leader>ff", function()
@@ -72,3 +75,5 @@ vim.keymap.set("i", "<C-l>", "<Esc>ysiW]wysiW]eeea<Space>", { desc = "`x` -> [[x
 vim.keymap.set("n", "<leader>nl", "ysiW]wysiW]w", { desc = "`x` -> [[x]]", remap = true })
 vim.keymap.set('v', '<leader>nl', "c[[<C-R>\"]]<Esc>", { desc = "[V] `x` -> [[x]]", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>nd", "ds]ds]", { desc = "[[x]] -> `x`", remap = true })
+
+vim.keymap.set('n', '<C-x>', ':noh<CR>', { remap = true, silent = true })
