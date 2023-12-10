@@ -56,7 +56,8 @@ function CreateMissingLinks(links)
 			end
 			if link_file then
 				print("CREATED: " .. link_file_path)
-				link_file:write("[[atom]]")
+				link_file:write("[[atom]]\n")
+				-- link_file:write("# " .. link)
 				link_file:close()
 			end
 			::skip_iteration::

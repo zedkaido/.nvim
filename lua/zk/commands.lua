@@ -5,6 +5,10 @@ vim.cmd([[command! Timestamp lua Timestamp()]])
 vim.cmd([[command! ID lua ID()]])
 vim.cmd([[command! Uid lua UUID()]])
 vim.cmd([[command! Journal lua Journal()]])
+vim.cmd([[command! JR lua Journal()]])
+vim.cmd([[command! TD lua vim.cmd("WikiJournal")]])
+vim.cmd([[command! WXJR lua WaxlogJournal()]])
+vim.cmd([[command! WXTD lua WaxlogToday()]])
 
 function Today()
 	local format = "%Y-%m-%d"
@@ -51,4 +55,14 @@ end
 
 function Journal()
 	vim.cmd("edit " .. vim.g.wiki_root .. "/journal.md")
+end
+
+function WaxlogJournal()
+	vim.cmd("edit " .. vim.g.wiki_root .. "/waxlog_worklog.md")
+end
+
+function WaxlogToday()
+	local format = "%Y-%m-%d"
+	local date = os.date(format)
+	vim.cmd("edit " .. vim.g.wiki_root .. "/WL-" .. tostring(date) .. ".md")
 end

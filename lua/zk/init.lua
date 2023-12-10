@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("zk.plugins")
 
 require "zk.commands"
-require "zk.short-commands"
 require "zk.garden"
 require "zk.statusline"
 require "zk.ts"

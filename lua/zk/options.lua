@@ -68,6 +68,7 @@ vim.opt.wildmode = "list:full" -- list:full | list:longest
 vim.opt.wildignore:append "**/node_modules/**"
 
 vim.g.wiki_root = "~/zk/garden"
+vim.g.wiki_link_transform_on_follow = false
 vim.g.wiki_journal = {
 	root = "~/zk/garden",
 }
