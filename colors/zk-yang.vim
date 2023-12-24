@@ -30,20 +30,20 @@ let s:palette.gray02 = [238, '#444444']
 let s:palette.gray01 = [235, '#262626']
 let s:palette.black = [233, '#000000']
 
-let s:palette.purple = [98, '#875fd7']
-let s:palette.brown = [130, '#af5f00']
-let s:palette.blue = [67, '#5f87af']
-let s:palette.darkblue = [27, '#005fff']
-let s:palette.green = [65, '#5f875f']
-let s:palette.red = [88, '#870000']
-let s:palette.magenta = [125, '#af005f']
-
 let s:palette.comment = [244, '#808080']
 let s:palette.foreground = [233, '#424242']
 let s:palette.background = [254, '#f7f7f7']
 let s:palette.highlight = [250, '#dddddd']
 let s:palette.colour = [125, '#af005f']
 let s:palette.cursor_line = [253, '#f1f1f1']
+
+let s:palette.purple = s:palette.foreground 
+let s:palette.brown = [130, '#af5f00']
+let s:palette.blue = s:palette.foreground 
+let s:palette.darkblue = s:palette.foreground 
+let s:palette.green = [65, '#5f875f']
+let s:palette.red = [88, '#870000']
+let s:palette.magenta = [125, '#af005f']
 
 if has("nvim")
     let g:terminal_color_0 = s:palette.gray01[1]
@@ -144,7 +144,7 @@ call s:hi('Cursor', [], s:palette.foreground, '')
 call s:hi('Underlined', s:palette.gray08, [], 'underline')
 call s:hi('SpecialKey', s:palette.gray13, [], '')
 call s:hi('NonText', s:palette.gray13, [], '')
-call s:hi('Directory', s:palette.gray08, [], '')
+call s:hi('Directory', s:palette.gray07, [], '')
 
 call s:hi('Pmenu', s:palette.foreground, s:palette.gray15, 'none')
 call s:hi('PmenuSbar', s:palette.black, s:palette.black, 'none')
