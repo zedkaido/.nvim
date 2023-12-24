@@ -14,5 +14,15 @@ return {
 		vim.keymap.set("n", "<M-7>", function() ui.nav_file(7) end)
 		vim.keymap.set("n", "<M-8>", function() ui.nav_file(8) end)
 		vim.keymap.set("n", "<M-9>", function() ui.nav_file(9) end)
+
+		-- TODO
+		-- require("harpoon.tmux").gotoTerminal(1);
+		-- lua require("harpoon.term").gotoTerminal(1)
+
+		require("harpoon").setup({
+			menu = {
+				width = 131,
+			}
+		})
 	end
 }

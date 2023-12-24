@@ -55,36 +55,6 @@ return {
 		telescope.setup({
 			defaults = {
 				file_ignore_patterns = { "node_modules", "static" },
-				layout_config = {
-					bottom_pane = {
-						height = 25,
-						preview_cutoff = 24,
-						prompt_position = "top"
-					},
-					center = {
-						height = 0.4,
-						preview_cutoff = 24,
-						prompt_position = "top",
-						width = 0.5
-					},
-					cursor = {
-						height = 0.9,
-						preview_cutoff = 24,
-						width = 0.8
-					},
-					horizontal = {
-						height = 0.96,
-						preview_cutoff = 24,
-						prompt_position = "bottom",
-						width = 0.96
-					},
-					vertical = {
-						height = 0.96,
-						preview_cutoff = 24,
-						prompt_position = "bottom",
-						width = 0.96
-					}
-				}
 			}
 		})
 	end
