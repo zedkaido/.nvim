@@ -1,4 +1,4 @@
-vim.cmd [[colorscheme yang]]
+vim.cmd [[colorscheme zk-yang]]
 
 require "zk.keymaps"
 require "zk.options"

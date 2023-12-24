@@ -1,7 +1,5 @@
-" YinYang - black/white color scheme
-
-if (&background ==# "dark" && get(g:, "colors_name", "") ==# "yang")
-    runtime! colors/yin.vim
+if (&background ==# "dark" && get(g:, "colors_name", "") ==# "zk-yang")
+    runtime! colors/zk-yin.vim
     finish
 endif
 
@@ -10,16 +8,15 @@ highlight clear
 if exists("syntax_on")
     syntax reset
 endif
-let g:colors_name = "yang"
-
+let g:colors_name = "zk-yang"
 
 let s:palette = {}
 
-let s:palette.white = [254, '#f1f1f1']
+let s:palette.white = [254, '#f7f7f7']
 let s:palette.gray15 = [253, '#e4e4e4']
-let s:palette.gray14 = [250, '#bcbcbc']
+let s:palette.gray14 = [250, '#d0d0d0']
 let s:palette.gray13 = [249, '#b2b2b2']
-let s:palette.gray12 = [248, '#a4a4a4']
+let s:palette.gray12 = [248, '#a8a8a8']
 let s:palette.gray11 = [247, '#9e9e9e']
 let s:palette.gray10 = [246, '#949494']
 let s:palette.gray09 = [245, '#8a8a8a']
@@ -28,19 +25,25 @@ let s:palette.gray07 = [243, '#767676']
 let s:palette.gray06 = [242, '#666666']
 let s:palette.gray05 = [241, '#606060']
 let s:palette.gray04 = [240, '#585858']
-let s:palette.gray03 = [239, '#4a4a4a']
-let s:palette.gray02 = [238, '#404040']
-let s:palette.gray01 = [235, '#242424']
-let s:palette.black = [233, '#101010']
+let s:palette.gray03 = [239, '#4e4e4e']
+let s:palette.gray02 = [238, '#444444']
+let s:palette.gray01 = [235, '#262626']
+let s:palette.black = [233, '#000000']
 
 let s:palette.purple = [98, '#875fd7']
 let s:palette.brown = [130, '#af5f00']
 let s:palette.blue = [67, '#5f87af']
 let s:palette.darkblue = [27, '#005fff']
 let s:palette.green = [65, '#5f875f']
-let s:palette.yello = [110, '#101010']
 let s:palette.red = [88, '#870000']
 let s:palette.magenta = [125, '#af005f']
+
+let s:palette.comment = [244, '#808080']
+let s:palette.foreground = [233, '#424242']
+let s:palette.background = [254, '#f7f7f7']
+let s:palette.highlight = [250, '#dddddd']
+let s:palette.colour = [125, '#af005f']
+let s:palette.cursor_line = [253, '#f1f1f1']
 
 if has("nvim")
     let g:terminal_color_0 = s:palette.gray01[1]
@@ -96,91 +99,80 @@ function! s:hi(group, fg_color, bg_color, style)
     execute join(highlight_command, ' ')
 endfunction
 
-
-call s:hi('Normal', s:palette.gray05, s:palette.white, '')
+call s:hi('Normal', s:palette.foreground, s:palette.background, '')
 set background=light
 
-call s:hi('Constant', s:palette.gray11, [], 'bold')
-call s:hi('String', s:palette.gray08, [], '')
-call s:hi('Number', s:palette.gray10, [], '')
+call s:hi('Constant', s:palette.foreground, [], 'bold')
+call s:hi('String', s:palette.foreground, [], '')
+call s:hi('Number', s:palette.foreground, [], '')
 
-call s:hi('Identifier', s:palette.gray06, [], 'none')
-call s:hi('Function', s:palette.gray06, [], '')
+call s:hi('Identifier', s:palette.foreground, [], 'none')
+call s:hi('Function', s:palette.foreground, [], '')
 
-call s:hi('Statement', s:palette.gray08, [], 'bold')
-call s:hi('Operator', s:palette.gray03, [], 'none')
-call s:hi('Keyword', s:palette.gray10, [], '')
+call s:hi('Statement', s:palette.foreground, [], 'bold')
+call s:hi('Operator', s:palette.foreground, [], 'none')
+call s:hi('Keyword', s:palette.foreground, [], '')
 
-call s:hi('PreProc', s:palette.gray10, [], 'none')
+call s:hi('PreProc', s:palette.foreground, [], 'none')
 
-call s:hi('Type', s:palette.gray09, [], 'bold')
+call s:hi('Type', s:palette.foreground, [], 'bold')
 
-call s:hi('Special', s:palette.gray10, [], '')
-call s:hi('SpecialComment', s:palette.gray12, [], 'bold')
+call s:hi('Special', s:palette.foreground, [], '')
+call s:hi('SpecialComment', s:palette.foreground, [], 'bold')
 
-call s:hi('Title', s:palette.gray10, [], 'bold')
-call s:hi('Todo', s:palette.purple, s:palette.white, '')
-if has("nvim") || has("gui_running")
-    call s:hi('Comment', s:palette.gray12, [], 'italic')
-else
-    call s:hi('Comment', s:palette.gray12, [], '')
-endif
+call s:hi('Title', s:palette.foreground, [], 'bold')
+call s:hi('Todo', s:palette.foreground, [], '')
+call s:hi('Comment', s:palette.comment, [], '')
 
-call s:hi('LineNr', s:palette.gray13, s:palette.gray15, 'none')
-call s:hi('FoldColumn', s:palette.gray08, s:palette.gray15, 'none')
-call s:hi('CursorLine', [], s:palette.gray15, 'none')
-call s:hi('CursorLineNr', s:palette.gray06, s:palette.gray15, 'none')
+call s:hi('LineNr', s:palette.gray14, s:palette.background, 'none')
+call s:hi('FoldColumn', s:palette.gray08, s:palette.background, 'none')
+call s:hi('CursorLine', [], s:palette.cursor_line, 'none')
+call s:hi('CursorLineNr', s:palette.foreground, s:palette.cursor_line, 'none')
 
-call s:hi('Visual', s:palette.white, s:palette.gray06, '')
-call s:hi('Search', s:palette.gray15, s:palette.gray03, 'none')
-call s:hi('IncSearch', s:palette.white, s:palette.gray11, 'bold')
+call s:hi('Visual', s:palette.foreground, s:palette.highlight, '')
+call s:hi('Search', s:palette.foreground, s:palette.highlight, 'none')
+call s:hi('IncSearch', s:palette.highlight, s:palette.colour, 'bold')
 
-call s:hi('SpellBad', s:palette.red, s:palette.white, 'undercurl')
-call s:hi('SpellCap', s:palette.red, s:palette.white, 'undercurl')
-call s:hi('SpellLocal', s:palette.red, s:palette.white, 'undercurl')
-call s:hi('SpellRare', s:palette.brown, s:palette.white, 'undercurl')
+call s:hi('SpellBad', s:palette.red, [], 'undercurl')
+call s:hi('SpellCap', s:palette.red, [], 'undercurl')
+call s:hi('SpellLocal', s:palette.red, [], 'undercurl')
+call s:hi('SpellRare', s:palette.brown, [], 'undercurl')
 
-call s:hi('Error', s:palette.red, s:palette.white, 'bold')
-call s:hi('ErrorMsg', s:palette.red, s:palette.white, '')
-call s:hi('WarningMsg', s:palette.brown, s:palette.white, '')
-call s:hi('ModeMsg', s:palette.gray10, [], '')
-call s:hi('MoreMsg', s:palette.gray10, [], '')
+call s:hi('MatchParen', s:palette.colour, s:palette.white, '')
 
-call s:hi('MatchParen', s:palette.magenta, s:palette.white, '')
-
-call s:hi('Cursor', [], s:palette.gray12, '')
+call s:hi('Cursor', [], s:palette.foreground, '')
 call s:hi('Underlined', s:palette.gray08, [], 'underline')
 call s:hi('SpecialKey', s:palette.gray13, [], '')
 call s:hi('NonText', s:palette.gray13, [], '')
 call s:hi('Directory', s:palette.gray08, [], '')
 
-call s:hi('Pmenu', s:palette.gray05, s:palette.gray14, 'none')
-call s:hi('PmenuSbar', s:palette.white, s:palette.gray01, 'none')
-call s:hi('PmenuSel', s:palette.gray14, s:palette.gray05, '')
-call s:hi('PmenuThumb', s:palette.gray14, s:palette.gray03, 'none')
+call s:hi('Pmenu', s:palette.foreground, s:palette.gray15, 'none')
+call s:hi('PmenuSbar', s:palette.black, s:palette.black, 'none')
+call s:hi('PmenuSel', s:palette.foreground, s:palette.gray14, '')
+call s:hi('PmenuThumb', s:palette.gray09, s:palette.gray09, 'none')
 
-call s:hi('StatusLine', s:palette.gray03, s:palette.gray13, 'none')
-call s:hi('StatusLineNC', s:palette.gray13, s:palette.gray15, 'none')
-call s:hi('WildMenu', s:palette.gray08, [], '')
-call s:hi('VertSplit', s:palette.gray13, s:palette.gray13, 'none')
+call s:hi('EndOfBuffer', s:palette.black, s:palette.background, '')
 
-call s:hi('DiffAdd', s:palette.white, s:palette.green, '')
-call s:hi('DiffChange', s:palette.white, s:palette.blue, '')
-call s:hi('DiffDelete', s:palette.white, s:palette.red, '')
-call s:hi('DiffText', s:palette.white, s:palette.darkblue, '')
-call s:hi('DiffAdded', s:palette.green, s:palette.white, '')
-call s:hi('DiffChanged', s:palette.blue, s:palette.white, '')
-call s:hi('DiffRemoved', s:palette.red, s:palette.white, '')
+call s:hi('StatusLine', s:palette.gray14, s:palette.black, 'none')
+call s:hi('StatusLineNC', s:palette.gray02, s:palette.gray15, 'none')
+call s:hi('WildMenu', s:palette.background, s:palette.foreground, '')
+call s:hi('VertSplit', [], [], 'none')
 
-call s:hi('DiagnosticError', s:palette.red, s:palette.white, '')
-call s:hi('DiagnosticInfo', s:palette.gray13, s:palette.white, '')
-call s:hi('DiagnosticWarn', s:palette.brown, s:palette.white, '')
-call s:hi('DiagnosticHint', s:palette.blue, s:palette.white, '')
+call s:hi('Error', s:palette.red, s:palette.background, 'bold')
 
-call s:hi('DiagnosticVirtualTextError', s:palette.red, s:palette.white, '')
-call s:hi('DiagnosticVirtualTextInfo', s:palette.gray13, s:palette.white, '')
-call s:hi('DiagnosticVirtualTextWarn', s:palette.brown, s:palette.white, '')
-call s:hi('DiagnosticVirtualTextHint', s:palette.blue, s:palette.white, '')
+call s:hi('MsgArea', s:palette.foreground, s:palette.gray14, 'none')
+call s:hi('ErrorMsg', s:palette.red, s:palette.background, '')
+call s:hi('WarningMsg', s:palette.brown, s:palette.background, '')
+call s:hi('ModeMsg', s:palette.foreground, [], '')
+call s:hi('MoreMsg', s:palette.foreground, [], '')
+
+call s:hi('DiffAdd', s:palette.green, s:palette.green, '')
+call s:hi('DiffChange', s:palette.blue, s:palette.blue, '')
+call s:hi('DiffDelete', s:palette.background, s:palette.red, '')
+call s:hi('DiffText', s:palette.background, s:palette.darkblue, '')
+call s:hi('DiffAdded', s:palette.green, s:palette.background, '')
+call s:hi('DiffChanged', s:palette.blue, s:palette.background, '')
+call s:hi('DiffRemoved', s:palette.red, s:palette.background, '')
 
 highlight! link Character Constant
 highlight! link Float Number

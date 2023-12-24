@@ -10,7 +10,7 @@ vim.cmd [[
 ]]
 
 vim.opt.guicursor = ""
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 vim.wo.signcolumn = "yes"
 vim.wo.number = true
@@ -27,6 +27,7 @@ vim.opt.smartindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- vim.opt.colorcolumn = "80"
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
@@ -45,9 +46,8 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.completeopt = "menuone,noselect"
+-- vim.opt.completeopt = "menu,menuone,noselect"
 
-vim.opt.colorcolumn = "80"
 vim.cmd([[
 	augroup AutoWrapMarkdown
 	autocmd!
@@ -63,9 +63,8 @@ vim.cmd([[
 -- search down into folders
 -- provides tab completion for all file-related tasks
 vim.opt.path:append "**"
-vim.opt.wildmenu = true
-vim.opt.wildmode = "list:full" -- list:full | list:longest
 vim.opt.wildignore:append "**/node_modules/**"
+vim.opt.wildoptions = "pum,tagfile"
 
 vim.g.wiki_root = "~/zk/garden"
 vim.g.wiki_link_transform_on_follow = false
@@ -75,6 +74,3 @@ vim.g.wiki_journal = {
 
 vim.opt.dictionary = "~/.thesaurus/words.txt"
 vim.opt.thesaurus = "~/.dictionary/words.txt"
-
--- required by vim-ai package
-vim.g.python3_host_prog = "/usr/local/bin/python3"
