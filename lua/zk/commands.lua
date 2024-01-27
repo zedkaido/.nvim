@@ -7,8 +7,8 @@ vim.cmd([[command! Uid lua UUID()]])
 vim.cmd([[command! Journal lua Journal()]])
 vim.cmd([[command! JR lua Journal()]])
 vim.cmd([[command! TD lua vim.cmd("WikiJournal")]])
-vim.cmd([[command! WXJR lua WaxlogJournal()]])
-vim.cmd([[command! WXTD lua WaxlogToday()]])
+vim.cmd([[command! WLJR lua WaxlogJournal()]])
+vim.cmd([[command! WLTD lua WaxlogToday()]])
 
 function Today()
 	local format = "%Y-%m-%d"
