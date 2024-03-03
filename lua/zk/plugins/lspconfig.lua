@@ -27,12 +27,20 @@ return {
 			nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 			nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-			nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+			-- go to definition and then do zz to bring it to the center;
+			nmap("gd", function()
+				vim.lsp.buf.definition()
+				vim.cmd("normal! zt")
+			end, "[G]oto [D]efinition")
+			-- nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+
 			nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 			nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 			nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 			nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 			nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+			vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format() end, { desc = "[F]ormat [F]ile" })
 
 			-- See `:help K` for why this keymap
 			nmap("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -87,8 +95,20 @@ return {
 			on_attach = on_attach,
 		}
 
+		-- -- INSTALL `pip install autotools-language-server`
+		-- require "lspconfig".autotools_ls.setup {
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- }
+
 		-- INSTALLL `go install golang.org/x/tools/gopls@latest`
 		require "lspconfig".gopls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- -- INSTALL `pnpm install -g typescript typescript-language-server`
+		require "lspconfig".tsserver.setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		}
@@ -100,13 +120,7 @@ return {
 		}
 
 		-- INSTALL `pnpm i -g vscode-langservers-extracted`
-		require "lspconfig".html.setup{
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
-
-		-- INSTALL `pnpm install -g typescript typescript-language-server`
-		require "lspconfig".tsserver.setup{
+		require "lspconfig".html.setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		}
@@ -139,10 +153,9 @@ return {
 		--require "lspconfig".rust_analyzer.setup {
 		--	capabilities = capabilities,
 		--	on_attach = on_attach,
-		--	diagnostics = {
+		--	iagnostics = {
 		--		enable = false;
 		--	}
 		--}
-
 	end
 }

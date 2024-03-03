@@ -1,5 +1,5 @@
 -- syntax who?
-vim.cmd("syntax off")
+vim.cmd("syntax on")
 
 vim.g.netrw_banner = 0
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
@@ -12,6 +12,9 @@ vim.cmd [[
 vim.opt.guicursor = ""
 vim.opt.cursorline = true
 
+-- Disable underline for errors
+-- vim.opt.errorformat = "%m"
+
 vim.wo.signcolumn = "yes"
 vim.wo.number = true
 vim.opt.relativenumber = true
@@ -22,13 +25,14 @@ vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = false
 
-vim.opt.smartindent = true
+vim.opt.smartindent = false
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- vim.opt.colorcolumn = "80"
 vim.opt.wrap = false
+vim.opt.linebreak = false
 
 vim.opt.swapfile = false
 vim.opt.writebackup = true
@@ -44,7 +48,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 3000
 
 -- vim.opt.completeopt = "menu,menuone,noselect"
 

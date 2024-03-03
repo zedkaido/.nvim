@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<leader>.", vim.cmd.Ex, { desc = ":Explorer" })
+vim.keymap.set("n", "<leader>.", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
@@ -60,9 +61,10 @@ vim.keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left
 vim.keymap.set("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "chmod +x %" })
 vim.keymap.set("n", "<leader>xz", "<cmd>!chmod -x %<CR>", { silent = true, desc = "chmod -x %" })
 
-vim.keymap.set("n", "<leader>gg", vim.cmd.Git, { desc = "[G]it" })
+vim.keymap.set("n", "<leader>gg", ":vert Git<CR>", { desc = "[G]it" })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "UndotreeToggle" })
 
+vim.keymap.set("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "[T]oggle [W]rapping" })
 vim.keymap.set("n", "<F6>", ":setlocal spell! spelllang=en_gb<CR>", { desc = "Toggle Spelling" })
 vim.keymap.set("n", "<leader>cgp", ":ChatGPT<CR>", { desc = "[C]hat[G]PT" })
 vim.keymap.set("n", "<leader>cga", ":ChatGPTActAs<CR>", { desc = "[C]hat[G]PT [A]ct as..." })
