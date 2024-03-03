@@ -39,8 +39,8 @@ let s:palette.cursor_line = [253, '#f1f1f1']
 
 let s:palette.purple = s:palette.foreground 
 let s:palette.brown = [130, '#af5f00']
-let s:palette.blue = s:palette.foreground 
-let s:palette.darkblue = s:palette.foreground 
+let s:palette.blue = [130, '#004E87']
+let s:palette.darkblue = s:palette.blue 
 let s:palette.green = [65, '#5f875f']
 let s:palette.red = [88, '#870000']
 let s:palette.magenta = [125, '#af005f']
@@ -141,7 +141,7 @@ call s:hi('SpellRare', s:palette.brown, [], 'undercurl')
 call s:hi('MatchParen', s:palette.colour, s:palette.white, '')
 
 call s:hi('Cursor', [], s:palette.foreground, '')
-call s:hi('Underlined', s:palette.gray08, [], 'underline')
+call s:hi('Underlined', s:palette.foreground, [], 'underline')
 call s:hi('SpecialKey', s:palette.gray13, [], '')
 call s:hi('NonText', s:palette.gray13, [], '')
 call s:hi('Directory', s:palette.gray07, [], '')
@@ -166,13 +166,22 @@ call s:hi('WarningMsg', s:palette.brown, s:palette.background, '')
 call s:hi('ModeMsg', s:palette.foreground, [], '')
 call s:hi('MoreMsg', s:palette.foreground, [], '')
 
-call s:hi('DiffAdd', s:palette.green, s:palette.green, '')
-call s:hi('DiffChange', s:palette.blue, s:palette.blue, '')
-call s:hi('DiffDelete', s:palette.background, s:palette.red, '')
-call s:hi('DiffText', s:palette.background, s:palette.darkblue, '')
+call s:hi('DiffAdd', s:palette.green, s:palette.background, '')
+call s:hi('DiffChange', s:palette.blue, s:palette.background, '')
+call s:hi('DiffDelete', s:palette.red, s:palette.background, '')
+call s:hi('DiffText', s:palette.darkblue, s:palette.background, '')
 call s:hi('DiffAdded', s:palette.green, s:palette.background, '')
 call s:hi('DiffChanged', s:palette.blue, s:palette.background, '')
 call s:hi('DiffRemoved', s:palette.red, s:palette.background, '')
+
+call s:hi('DiagnosticError', s:palette.red, [], '')
+call s:hi('DiagnosticWarn', s:palette.brown, [], '')
+call s:hi('DiagnosticInfo', s:palette.blue, [], '')
+call s:hi('DiagnosticHint', s:palette.gray06, [], '')
+call s:hi('DiagnosticUnderlineError', s:palette.red, [], '')
+call s:hi('DiagnosticUnderlineWarn', s:palette.brown, [], '')
+call s:hi('DiagnosticUnderlineInfo', s:palette.blue, [], '')
+call s:hi('DiagnosticUnderlineHint', s:palette.gray06, [], '')
 
 highlight! link Character Constant
 highlight! link Float Number
